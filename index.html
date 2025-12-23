@@ -1,0 +1,338 @@
+import React, { useState } from 'react';
+import { Mail, Phone, MapPin, Linkedin, Github, Code, Briefcase, GraduationCap, Award, FileText, ChevronDown } from 'lucide-react';
+
+export default function Portfolio() {
+  const [activeSection, setActiveSection] = useState('home');
+
+  const scrollToSection = (sectionId) => {
+    setActiveSection(sectionId);
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full bg-slate-900/80 backdrop-blur-md z-50 border-b border-purple-500/20">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Nirmani Athukorala
+            </h1>
+            <div className="flex gap-6">
+              {['home', 'about', 'experience', 'projects', 'contact'].map((section) => (
+                <button
+                  key={section}
+                  onClick={() => scrollToSection(section)}
+                  className={`capitalize hover:text-purple-400 transition-colors ${
+                    activeSection === section ? 'text-purple-400' : ''
+                  }`}
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="home" className="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div className="max-w-4xl text-center">
+          <div className="mb-8 inline-block">
+            <div className="w-32 h-32 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full mx-auto flex items-center justify-center text-5xl font-bold">
+              NA
+            </div>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
+            NIRMANI ATHUKORALA
+          </h1>
+          <p className="text-2xl md:text-3xl text-purple-300 mb-8">
+            IT Graduate & Web Developer
+          </p>
+          <p className="text-lg text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Motivated and detail-oriented IT graduate with hands-on experience in web development. 
+            Skilled in React, PHP, and modern web technologies, passionate about building responsive 
+            and user-friendly applications.
+          </p>
+          <div className="flex gap-4 justify-center">
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="bg-purple-600 hover:bg-purple-700 px-8 py-3 rounded-full font-semibold transition-all transform hover:scale-105"
+            >
+              Get In Touch
+            </button>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="border border-purple-400 hover:bg-purple-400/10 px-8 py-3 rounded-full font-semibold transition-all"
+            >
+              View Projects
+            </button>
+          </div>
+          <div className="mt-16 animate-bounce">
+            <ChevronDown className="mx-auto" size={32} />
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">About Me</h2>
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-slate-800/50 backdrop-blur p-8 rounded-2xl border border-purple-500/20">
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Code className="text-purple-400" />
+                Technical Skills
+              </h3>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-semibold text-purple-300 mb-2">Languages</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {['HTML', 'CSS', 'JavaScript', 'Java', 'Python', 'C#', 'PHP'].map((skill) => (
+                      <span key={skill} className="bg-purple-600/30 px-3 py-1 rounded-full text-sm">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-purple-300 mb-2">Frameworks & Tools</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {['React Vite', 'CodeIgniter', 'Bootstrap', 'Tailwind CSS', 'Angular', 'MySQL', 'Firebase'].map((skill) => (
+                      <span key={skill} className="bg-pink-600/30 px-3 py-1 rounded-full text-sm">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-800/50 backdrop-blur p-8 rounded-2xl border border-purple-500/20">
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Award className="text-purple-400" />
+                Soft Skills
+              </h3>
+              <div className="space-y-4">
+                {[
+                  'Problem-solving',
+                  'System Design',
+                  'Technical Documentation',
+                  'Team Collaboration'
+                ].map((skill) => (
+                  <div key={skill} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                    <span>{skill}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section id="experience" className="py-20 px-6 bg-slate-900/50">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Experience & Education</h2>
+          
+          <div className="space-y-8">
+            {/* Work Experience */}
+            <div className="bg-slate-800/50 backdrop-blur p-8 rounded-2xl border border-purple-500/20">
+              <div className="flex items-start gap-4">
+                <Briefcase className="text-purple-400 mt-1" size={24} />
+                <div className="flex-1">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h3 className="text-xl font-bold">ICT Directorate</h3>
+                      <p className="text-purple-300">Development Lottery Board, Colombo 02</p>
+                    </div>
+                    <span className="text-gray-400">Jun 2024 – Jul 2024</span>
+                  </div>
+                  <ul className="space-y-2 text-gray-300 mt-4">
+                    <li>• Developed web systems using React Vite, PHP, Angular, and MySQL</li>
+                    <li>• Created comprehensive documentation (SRS, ERD)</li>
+                    <li>• Provided network and UI support</li>
+                    <li>• Web development training with XAMPP, Java, and data management</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Education */}
+            <div className="bg-slate-800/50 backdrop-blur p-8 rounded-2xl border border-purple-500/20">
+              <div className="flex items-start gap-4">
+                <GraduationCap className="text-purple-400 mt-1" size={24} />
+                <div className="flex-1">
+                  <div className="flex justify-between items-start mb-2">
+                    <div>
+                      <h3 className="text-xl font-bold">Bachelor of Technology Honours in ICT</h3>
+                      <p className="text-purple-300">General Sir John Kotelawala Defence University</p>
+                    </div>
+                    <span className="text-gray-400">2022 - 2025</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className="bg-slate-800/50 backdrop-blur p-8 rounded-2xl border border-purple-500/20">
+              <div className="flex items-start gap-4">
+                <Award className="text-purple-400 mt-1" size={24} />
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-4">Certifications</h3>
+                  <div className="grid md:grid-cols-2 gap-3">
+                    {[
+                      'Cisco Get Connected Course',
+                      'Cisco Packet Tracer Course',
+                      'Cisco IT Essential Course',
+                      'Python Programming for Beginners',
+                      'English Certificate Course',
+                    ].map((cert) => (
+                      <div key={cert} className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                        <span className="text-gray-300">{cert}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-4xl font-bold mb-12 text-center">Projects</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: 'Inventory Management System',
+                subtitle: 'Faculty of Technology Final Year Project',
+                period: 'Jan 2025 – Nov 2025',
+                description: 'QR-based asset tracking system managing 200+ assets',
+                tech: ['React', 'Tailwind CSS', 'Firebase', 'MySQL', 'Figma'],
+                icon: <FileText />
+              },
+              {
+                title: 'Online Course Registration System',
+                subtitle: '3rd Year Group Project',
+                description: 'Student enrollment and course management system',
+                tech: ['PHP', 'Bootstrap', 'MySQL'],
+                icon: <Code />
+              },
+              {
+                title: 'IoT-Based Smart Parking System',
+                subtitle: '4th Year IoT Mini-Project',
+                description: 'Automated parking detection using IoT sensors',
+                tech: ['IoT Sensors', 'Arduino', 'Raspberry Pi'],
+                icon: <Briefcase />
+              },
+              {
+                title: 'KDU International Research Conference',
+                subtitle: 'Poster Presentation - Sep 2025',
+                description: 'Presented research on Inventory Management using QR Technology',
+                tech: ['Research', 'QR Technology', 'Asset Management'],
+                icon: <Award />
+              }
+            ].map((project, index) => (
+              <div
+                key={index}
+                className="bg-slate-800/50 backdrop-blur p-8 rounded-2xl border border-purple-500/20 hover:border-purple-400/50 transition-all transform hover:scale-105"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="text-purple-400">{project.icon}</div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-1">{project.title}</h3>
+                    <p className="text-purple-300 text-sm mb-2">{project.subtitle}</p>
+                    {project.period && <p className="text-gray-400 text-sm mb-3">{project.period}</p>}
+                  </div>
+                </div>
+                <p className="text-gray-300 mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span key={tech} className="bg-purple-600/30 px-3 py-1 rounded-full text-xs">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 bg-slate-900/50">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-12">Get In Touch</h2>
+          
+          <div className="grid md:grid-cols-2 gap-6 mb-12">
+            <a
+              href="mailto:chamodyathukorala@gmail.com"
+              className="bg-slate-800/50 backdrop-blur p-6 rounded-2xl border border-purple-500/20 hover:border-purple-400/50 transition-all flex items-center gap-4"
+            >
+              <Mail className="text-purple-400" size={24} />
+              <div className="text-left">
+                <p className="text-sm text-gray-400">Email</p>
+                <p className="font-semibold">chamodyathukorala@gmail.com</p>
+              </div>
+            </a>
+
+            <a
+              href="tel:+94701107577"
+              className="bg-slate-800/50 backdrop-blur p-6 rounded-2xl border border-purple-500/20 hover:border-purple-400/50 transition-all flex items-center gap-4"
+            >
+              <Phone className="text-purple-400" size={24} />
+              <div className="text-left">
+                <p className="text-sm text-gray-400">Phone</p>
+                <p className="font-semibold">+94 701 107 577</p>
+              </div>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/chamodya-nirmani"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-800/50 backdrop-blur p-6 rounded-2xl border border-purple-500/20 hover:border-purple-400/50 transition-all flex items-center gap-4"
+            >
+              <Linkedin className="text-purple-400" size={24} />
+              <div className="text-left">
+                <p className="text-sm text-gray-400">LinkedIn</p>
+                <p className="font-semibold">chamodya-nirmani</p>
+              </div>
+            </a>
+
+            <a
+              href="https://github.com/wacnathukorala"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-slate-800/50 backdrop-blur p-6 rounded-2xl border border-purple-500/20 hover:border-purple-400/50 transition-all flex items-center gap-4"
+            >
+              <Github className="text-purple-400" size={24} />
+              <div className="text-left">
+                <p className="text-sm text-gray-400">GitHub</p>
+                <p className="font-semibold">wacnathukorala</p>
+              </div>
+            </a>
+          </div>
+
+          <div className="flex items-center justify-center gap-2 text-gray-400">
+            <MapPin size={20} />
+            <p>Upasakawatta, Welkandala Road, Pantiya, Mathugama, Sri Lanka</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-6 border-t border-purple-500/20">
+        <div className="max-w-6xl mx-auto text-center text-gray-400">
+          <p>© 2025 Nirmani Athukorala. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
